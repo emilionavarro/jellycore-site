@@ -1,0 +1,26 @@
+.center-text {
+    text-align: center;
+}
+
+.jellycore-logo {
+    width: 40%;
+    padding-left: 5%;
+    padding-top: 2.5%;
+}
+
+.header {
+    color: #fff;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 2.5%;
+}
