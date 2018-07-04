@@ -7,14 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   availableAdjectives: string[];
-  adjective: string;
+  adjectiveIndex: number;
 
   constructor() {
     this.setDefaults();
-    this.chooseAdjective();
+    this.loopAdjectives();
   }
 
   setDefaults() {
+    this.adjectiveIndex = 0;
     this.availableAdjectives = [
       "different"
       , "original"
@@ -29,23 +30,34 @@ export class AppComponent {
       , "provocative"
       , "delightful"
       , "engaging"
+      , "gripping"
+      , "exciting"
+      , "fascinating"
+      , "intriguing"
+      , "lively"
+      , "modern"
+      , "stimulating"
+      , "mind-blowing"
+      , "electrifying"
     ];
   }
 
-  chooseAdjective() {
+  changeAdjective() {
     var max = 0;
 
     max = this.availableAdjectives.length;
+    this.adjectiveIndex = getRandomInRange(0, max - 1, this.adjectiveIndex); //include min, exclude max
+  }
 
-    if (max > 0)
-      this.adjective = this.availableAdjectives[getRandomInRange(0, max - 1)]; //include min, exclude max
-    else
-      this.adjective = DEFAULT_ADJECTIVE;
+  loopAdjectives() {
+    setInterval(() => {
+      this.changeAdjective();
+    }, 1000);
   }
 }
 
-const getRandomInRange = (min, max) => {
-  return Math.floor(Math.random() * (max - min) + min);
-}
+const getRandomInRange = (min:number, max:number, exclude?) => {
+  var result = Math.floor(Math.random() * (max - min) + min);
 
-const DEFAULT_ADJECTIVE: string = "cool";
+  return (result === exclude) ? getRandomInRange(min, max, exclude) : result;
+}
