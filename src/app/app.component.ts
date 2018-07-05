@@ -35,6 +35,7 @@ export class AppComponent {
       , "fascinating"
       , "intriguing"
       , "lively"
+      , "cool"
       , "modern"
       , "stimulating"
       , "mind-blowing"
